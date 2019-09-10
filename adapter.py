@@ -53,22 +53,20 @@ class App:
         self.labelresul = Label(text="El resultado es: "  )
         self.labelresul.grid(row=1,column=1)
 		#boton get 
-        self.getbutton = Button(self.ventana,text="Get", command=self.CallBack(self.entradax,self.entraday) )
+        self.getbutton = Button(self.ventana,text="Get", command=self.getaction )
         self.getbutton.grid(row=1,column=3)				
         
         self.ventana.mainloop()
 		
     #acciones para los botones
-    def CallBack(self,entradax,entraday):
-        try:
-            print(self.vector)
-            #intx = int(entradax.get())
-            #inty = int(entraday.get())
-            intx = 4
-            inty = 3
+    def getaction(self):
+        try:            
+            intx = int(self.entradax.get())
+            inty = int(self.entraday.get())
+            #intx = 4
+            #inty = 3
             ob = Adapter(3,4,self.vector)
-            resultado = ob.getElement( intx,inty )
-            print("resul "+str(resultado))
+            resultado = ob.getElement( intx,inty )            
             self.labelresul.configure(text="El resultado es:" + str(resultado)  )
         except ValueError:
             pass
